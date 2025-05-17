@@ -1,0 +1,246 @@
+body {
+    font-family: 'Arial', sans-serif;
+    /* Cor de fundo romântica e suave - gradiente */
+    background: linear-gradient(120deg, #ffc0cb, #e6e6fa, #ffc0cb); /* Tons de Rosa Bebê e Lavanda */
+    background-size: 400% 400%; /* Para animação do gradiente */
+    animation: romanticGradient 15s ease infinite; /* Animação do gradiente */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+    position: relative; /* Para os corações flutuantes */
+}
+
+@keyframes romanticGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.92); /* Levemente mais opaco */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 700px;
+    transition: all 0.5s ease-in-out;
+    z-index: 10; /* Para ficar acima dos corações de fundo */
+    position: relative; /* Garante que o z-index funcione */
+}
+
+section {
+    padding: 20px 0;
+    border-bottom: 1px dashed #e1bee7; /* Lilás suave */
+    margin-bottom: 20px;
+}
+section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.active-section {
+    display: block;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    color: #c2185b; /* Rosa mais escuro */
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #e91e63; /* Rosa choque */
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* --- Corações Flutuantes --- */
+.floating-heart {
+    position: fixed; /* Flutua na tela toda */
+    bottom: -60px; /* Começa fora da tela, abaixo */
+    font-size: 20px; /* Tamanho base, será variado */
+    color: red; /* Cor base, será variada */
+    pointer-events: none; /* Não interfere com cliques */
+    opacity: 0.7;
+    animation: floatUpwards linear;
+    z-index: 1; /* Atrás do .container, mas acima do fundo do body */
+    text-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+@keyframes floatUpwards {
+    0% {
+        transform: translateY(0) translateX(0vw) scale(1);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-110vh) translateX(var(--sway)) scale(0.5); /* Flutua para cima e um pouco para os lados */
+        opacity: 0;
+    }
+}
+
+
+/* --- Seção 1: Medidor de Amor --- */
+.heart-container {
+    margin-bottom: 20px;
+}
+
+.heart {
+    font-size: 80px;
+    color: #e91e63; /* Cor principal do coração */
+    animation: pulse 1.5s infinite ease-in-out;
+    display: inline-block;
+    text-shadow: 0 0 10px rgba(233, 30, 99, 0.5);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
+.love-slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+#love-slider {
+    width: 60%;
+    cursor: pointer;
+    accent-color: #e91e63;
+}
+
+#love-percentage {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #555;
+}
+
+#love-message {
+    margin-top: 15px;
+    font-size: 1.3em;
+    color: #c2185b;
+    font-weight: bold;
+}
+
+/* --- Seção 2: Galeria de Fotos --- */
+.gallery-container {
+    margin-top: 20px;
+    position: relative;
+}
+
+#gallery-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 450px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+    object-fit: cover;
+    background-color: #f8f8f8;
+}
+
+.gallery-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+#image-caption {
+    font-style: italic;
+    color: #666;
+    min-height: 1.2em;
+}
+
+/* --- Seção 3: Termômetro de Dias --- */
+.timer-display {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.time-box {
+    background-color: #fce4ec; /* Rosa bem clarinho */
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(233, 30, 99, 0.1);
+    min-width: 100px;
+    transition: transform 0.2s ease-out; /* Para animação ao atualizar */
+}
+
+.time-box span:first-child { /* Os números */
+    display: block;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #c2185b;
+    transition: color 0.5s; /* Transição suave da cor do número */
+    animation: numberUpdate 0.5s ease-in-out; /* Animação sutil ao mudar o número */
+}
+
+@keyframes numberUpdate { /* Animação sutil para os números */
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+
+.time-box span:last-child { /* "Dias", "Horas", etc */
+    font-size: 0.9em;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.final-message {
+    margin-top: 30px;
+    line-height: 1.7;
+    font-size: 1.1em;
+    color: #444;
+}
+
+.final-message p {
+    margin-bottom: 15px;
+}
+
+/* Botões */
+.next-btn, .gallery-navigation button {
+    background-color: #e91e63;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-top: 20px;
+}
+
+.next-btn:hover, .gallery-navigation button:hover {
+    background-color: #ad1457; /* Rosa mais escuro no hover */
+    transform: translateY(-2px);
+}
+.gallery-navigation button {
+    padding: 10px 18px;
+    font-size: 0.9em;
+}
