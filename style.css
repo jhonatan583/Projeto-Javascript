@@ -244,3 +244,49 @@ h2 {
     padding: 10px 18px;
     font-size: 0.9em;
 }
+
+/* Adicione ao final do seu style.css ou integre onde fizer sentido */
+
+#all-photos-collection-section h2 {
+    color: #c2185b; /* Reutilizando cor de título */
+    margin-bottom: 30px;
+}
+
+.all-photos-container {
+    margin: 20px auto;
+    max-width: 90%; /* Ajuste conforme preferir */
+    height: 450px; /* Defina uma altura para a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fdf6f8; /* Um fundo suave para o container da imagem */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    overflow: hidden; /* Caso a imagem seja maior */
+}
+
+#all-photos-image {
+    display: block; /* Remove espaço extra abaixo da imagem */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Para ver a foto inteira, use 'cover' se preferir preencher */
+    border-radius: 8px; /* Se quiser bordas arredondadas na imagem */
+    animation: fadeInImage 1s ease-in-out; /* Animação para troca de imagem */
+}
+
+@keyframes fadeInImage {
+    from { opacity: 0.3; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+
+.special-final-message {
+    margin-top: 30px;
+    font-size: 1.5em; /* Tamanho maior para destaque */
+    font-weight: bold;
+    color: #e91e63; /* Cor romântica */
+    padding: 20px;
+    background-color: rgba(255, 229, 236, 0.8); /* Fundo rosa bem clarinho */
+    border-radius: 10px;
+    display: inline-block; /* Para o background se ajustar ao texto */
+}
